@@ -21,35 +21,35 @@ async function insertTestData() {
     `);
 
     // Dogs
-    await db.query(`INSERT IGNORE INTO Dogs (owner_id, name, size)
+    await query(`INSERT IGNORE INTO Dogs (owner_id, name, size)
                     SELECT user_id, 'Max', 'medium'
                     FROM Users
                     WHERE username = 'alice123'
 
     `);
 
-    await db.query(`INSERT IGNORE INTO Dogs (owner_id, name, size)
+    await query(`INSERT IGNORE INTO Dogs (owner_id, name, size)
                     SELECT user_id, 'Bella', 'small'
                     FROM Users
                     WHERE username = 'carol123'
 
     `);
 
-    await db.query(`INSERT IGNORE INTO Dogs (owner_id, name, size)
+    await query(`INSERT IGNORE INTO Dogs (owner_id, name, size)
                     SELECT user_id, 'Jack', 'large'
                     FROM Users
                     WHERE username = 'carol123'
 
     `);
 
-    await db.query(`INSERT IGNORE INTO Dogs (owner_id, name, size)
+    await query(`INSERT IGNORE INTO Dogs (owner_id, name, size)
                     SELECT user_id, 'Jackie', 'medium'
                     FROM Users
                     WHERE username = 'user05'
 
     `);
 
-    await db.query(`INSERT IGNORE INTO Dogs (owner_id, name, size)
+    await query(`INSERT IGNORE INTO Dogs (owner_id, name, size)
                     SELECT user_id, 'Mel', 'large'
                     FROM Users
                     WHERE username = 'user05'
@@ -57,28 +57,28 @@ async function insertTestData() {
     `);
 
     // WalkRequests
-    await db.query(`INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
+    await query(`INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
                     SELECT dog_id, '2025-06-10 08:00:00', 30, 'Parklands', 'open'
                     FROM Dogs
                     WHERE name = 'Max'
 
     `);
 
-    await db.query(`INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
+    await query(`INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
                     SELECT dog_id, '2025-06-10 09:30:00', 45, 'Beachside Ave', 'accepted'
                     FROM Dogs
                     WHERE name = 'Bella'
 
     `);
 
-    await db.query(`INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
+    await query(`INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
                     SELECT dog_id, '2025-06-20 09:45:00', 15, 'Woodville', 'accepted'
                     FROM Dogs
                     WHERE name = 'Jack'
 
     `);
 
-    await db.query(`INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
+    await query(`INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
                     SELECT dog_id, '2025-06-05 09:45:00', 35, 'Adelaide', 'cancelled'
                     FROM Dogs
                     WHERE name = 'Mel'
