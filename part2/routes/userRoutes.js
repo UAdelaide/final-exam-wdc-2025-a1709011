@@ -106,12 +106,8 @@ router.get('/user-dogs', async function(req, res, next) {
   }
 });
 
-router.get('/user-dogs', async function(req, res, next) {
-  if (!req.session || !req.session.user) {
-    return res.status(401).json({ error: 'Not logged in' });
-  }
-
-  const ownerId = req.session.user.user_id;
+router.get('/all-dogs', async function(req, res, next) {
+  
 
   try {
     const [rows] = await db.query(`
