@@ -34,12 +34,11 @@ let db;
     });
 
     // Insert test data
-    await db.execute(`
-      CREATE TABLE IF NOT EXISTS books (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        title VARCHAR(255),
-        author VARCHAR(255)
-      )
+    await pool.query(`INSERT IGNORE INTO Users (user_id, username, email, password_hash, role) VALUES
+      (1, 'alice123', 'alice@example.com', 'xxx', 'owner'),
+      (2, 'carol123', 'carol@example.com', 'xxx', 'owner'),
+      (3, 'bobwalker', 'bobwalker@example.com', 'xxx', 'walker'),
+      (4, 'newwalker', 'newwalker@example.com', 'xxx', 'walker')
     `);
 
     // Insert data if table is empty
