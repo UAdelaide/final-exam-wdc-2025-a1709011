@@ -186,35 +186,7 @@
         } else if (this.isLoggedIn) {
             this.fetchOrders();
         }
-
-        fetch('/users/all-customers', { credentials: 'include' })
-            .then(res => res.json())
-            .then(data => {
-                this.customers = data;
-            })
-            .catch(err => {
-                console.error('Error fetching customers:', err);
-            });
-
-        const storedDarkMode = localStorage.getItem('darkMode');
-        if (storedDarkMode === 'true') {
-            this.isDarkMode = true;
-            document.body.classList.add('dark-mode');
-        }
-        const path = window.location.pathname;
-        if (path.includes('profile.html')) this.activeTab = 'profile';
-        else if (path.includes('address.html')) this.activeTab = 'address';
-        else if (path.includes('cart.html')) {
-            this.activeTab = 'cart';
-            this.loadCart();
-        }
-        else if (path.includes('customers.html')) { this.activeTab = 'customers'; }
-        else if (path.includes('order.html')) {
-            this.activeTab = 'order';
-            this.fetchPaypal();
-        }
-        else this.activeTab = 'home';
-    }
+      }
     }).mount('#app');
   </script>
 
