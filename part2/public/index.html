@@ -16,7 +16,7 @@
     <!--Login form-->
     <div class="login-section">
       <div class="login-container">
-        <form @submit.prevent="login" class="login-form">
+        <form onclick="login" class="login-form">
           <div class="form-group">
             <label for="username">Username</label>
             <input type="text" id="username" v-model="username" required>
