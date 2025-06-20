@@ -2,14 +2,8 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models/db');
 const session = require('express-session');
-const mysql = require('mysql2/promise');
 
-const db = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'DogWalkService'
-});
+
 
 // GET all users (for admin/testing)
 router.get('/', async (req, res) => {
