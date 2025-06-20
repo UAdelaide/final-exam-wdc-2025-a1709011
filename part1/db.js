@@ -20,7 +20,7 @@ function query(sql, params) {
 
 module.exports = {
   initDb,
-  query,
+  query
 };
 
 

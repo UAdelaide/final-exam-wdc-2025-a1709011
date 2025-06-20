@@ -85,7 +85,7 @@ async function insertTestData() {
 
     `);
 
-    await db.query(`INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
+    await query(`INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
                     SELECT dog_id, '2025-06-03 10:45:00', 55, 'Henly Beach', 'completed'
                     FROM Dogs
                     WHERE name = 'Jackie'
