@@ -20,7 +20,7 @@ app.use(cors({
 }));
 
 app.use(session({
-  secret: FINALEXAM2025,
+  secret: 'FINALEXAM2025',
   resave: false,
   saveUninitialized: false,
   cookie: {
