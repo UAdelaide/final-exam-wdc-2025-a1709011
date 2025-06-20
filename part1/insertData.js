@@ -7,4 +7,8 @@ async function initDb() {
     password: '',
     database: 'DogWalkService'
   });
+
+  try {
+
+  } catch (error)
 }
