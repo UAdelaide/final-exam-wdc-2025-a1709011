@@ -36,11 +36,10 @@ let db;
     // Insert test data
     await pool.query(`INSERT INTO Users (username, email, password_hash, role)
                 VALUES ('alice123', 'alice@example.com', 'hashed123', 'owner'),
-('bobwalker', 'bob@example.com', 'hashed456', 'walker'),
-('carol123', 'carol@example.com', 'hashed789', 'owner'),
-('user04', 'user04@example.com', 'user04hash', 'walker'),
-
-('user05', 'user05@example.com', 'user05hash', 'owner');
+                        ('bobwalker', 'bob@example.com', 'hashed456', 'walker'),
+                        ('carol123', 'carol@example.com', 'hashed789', 'owner'),
+                        ('user04', 'user04@example.com', 'user04hash', 'walker'),
+                        ('user05', 'user05@example.com', 'user05hash', 'owner')
     `);
 
     // Insert data if table is empty
