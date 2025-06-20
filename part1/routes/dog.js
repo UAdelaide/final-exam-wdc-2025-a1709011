@@ -7,6 +7,8 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-router.get('/dogs', async function())
+router.get('/dogs', async function(req, res, next {
+
+});
 
 module.exports = router;
