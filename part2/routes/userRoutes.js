@@ -61,7 +61,11 @@ router.post('/login', async (req, res) => {
       email: user.email,
       password: user.password_hash,
       role: user.role
-    };
+  };
+
+  req.session.save(() => {
+    res.json({ message: 'Login successful' });
+  });
 });
 
 
