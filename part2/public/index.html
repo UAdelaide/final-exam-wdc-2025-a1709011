@@ -131,7 +131,6 @@
                     if (!response.ok) {
                         this.errorMessage = 'Incorrect credentials.';
                         throw new Error('Login failed');
-                        grecaptcha.reset();
                     }
                     const userRes = await fetch('/users/me', {
                         credentials: 'include'
