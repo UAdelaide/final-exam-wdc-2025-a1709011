@@ -110,3 +110,11 @@ let db;
 
 
 module.exports = db;
+module.exports = {
+  query: async (sql, params) => {
+    if (!pool) {
+      throw new Error("Database pool not initialized");
+    }
+    return pool.query(sql, params);
+  }
+};
