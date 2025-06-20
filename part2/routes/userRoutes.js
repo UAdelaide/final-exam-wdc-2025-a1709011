@@ -106,5 +106,22 @@ router.get('/user-dogs', async function(req, res, next) {
   }
 });
 
+router.get('/user-dogs', async function(req, res, next) {
+  if (!req.session || !req.session.user) {
+    return res.status(401).json({ error: 'Not logged in' });
+  }
 
+  const ownerId = req.session.user.user_id;
+
+  try {
+    const [rows] = await db.query(`
+      SELECT d.dog_id, d.name AS dog_name, d.size
+      FROM Dogs d
+      WHERE d.owner_id = ?
+    `, [ownerId]);
+    res.json(rows);
+  } catch (error) {
+    res.status(500).json({ error: 'Error getting dogs.' });
+  }
+});
 module.exports = router;
