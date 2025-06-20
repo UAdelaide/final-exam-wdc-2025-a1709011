@@ -22,7 +22,7 @@ router.get('/dogs', async function(req, res, next) {
 
 router.get('/walkrequests/open', async function (req, res, next) {
   try {
-    const [rows] = await pool.query(`
+    const [rows] = await db.query(`
       SELECT wr.request_id,
              d.name AS dog_name,
              wr.requested_time,
