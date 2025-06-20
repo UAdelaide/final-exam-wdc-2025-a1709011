@@ -36,7 +36,7 @@ router.get('/walkrequests/open', async function (req, res, next) {
     `);
     res.json(rows);
   } catch (error) {
-    res.status(500).json({ error: 'Error retrieving open walk requests' });
+    res.status(500).json({ error: 'Error getting open walk requests.' });
   }
 });
 
