@@ -1,7 +1,7 @@
 var mysql = require('mysql2/promise');
 
 async function initDb() {
-  pool = mysql.createPool({
+  const pool = await mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: '',
