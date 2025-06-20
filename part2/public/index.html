@@ -186,26 +186,26 @@
         },
 
         async function loadDogs() {
-      try {
-        const res = await fetch('/api/dogs');
-        if (!res.ok) {
-            throw new Error('Failed to fetch dog data');
+          try {
+            const res = await fetch('/api/dogs');
+            if (!res.ok) {
+                throw new Error('Failed to fetch dog data');
+            }
+            const dogList = await res.json();
+
+            // Get a random image for each dog
+            const dogsWithPhotos = await Promise.all(dogList.map(async (dog) => {
+                const imgRes = await fetch('https://dog.ceo/api/breeds/image/random');
+                const imgData = await imgRes.json();
+                return { ...dog, photo: imgData.message };
+            }));
+
+            dogs.value = dogsWithPhotos;
+
+          } catch (err) {
+            error.value = err.message;
+          }
         }
-        const dogList = await res.json();
-
-        // Get a random image for each dog
-        const dogsWithPhotos = await Promise.all(dogList.map(async (dog) => {
-            const imgRes = await fetch('https://dog.ceo/api/breeds/image/random');
-            const imgData = await imgRes.json();
-            return { ...dog, photo: imgData.message };
-        }));
-
-        dogs.value = dogsWithPhotos;
-
-      } catch (err) {
-        error.value = err.message;
-      }
-    }
 
       },
 
