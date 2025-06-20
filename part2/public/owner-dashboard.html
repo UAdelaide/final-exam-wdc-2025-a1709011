@@ -165,17 +165,17 @@
         }
 
         async function loadDogs() {
-  try {
-    const res = await fetch('/api/dogs', {
-      method: 'GET',
-      credentials: 'include'
-    });
-    if (!res.ok) throw new Error('Failed to load dogs');
-    dogs.value = await res.json();
-  } catch (err) {
-    error.value = 'Error loading dogs: ' + err.message;
-  }
-}
+          try {
+            const res = await fetch('/api/users/dogs', {
+              method: 'GET',
+              credentials: 'include'
+            });
+            if (!res.ok) throw new Error('Failed to load dogs');
+            dogs.value = await res.json();
+          } catch (err) {
+            error.value = 'Error loading dogs: ' + err.message;
+          }
+        }
 
         onMounted(() => {
           loadWalks();
