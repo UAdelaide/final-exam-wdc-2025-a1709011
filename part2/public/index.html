@@ -201,7 +201,7 @@
                 return { ...dog, photo: imgData.message };
             }));
 
-            dogs.value = dogPhotos;
+            this.dogs = dogPhotos;
 
           } catch (err) {
             error.value = err.message;
