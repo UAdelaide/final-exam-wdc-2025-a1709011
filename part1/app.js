@@ -10,16 +10,6 @@ var dogRouter = require('./routes/dog');
 
 var app = express();
 
-(async () => {
-  try {
-    await initDb();
-    console.log("Database connected.");
-    await insertTestData();
-  } catch (error) {
-    console.error("Error initializing database:", error);
-  }
-})();
-
 async function insertTestData() {
     // Insert test data Users
     await query(`INSERT IGNORE INTO Users (username, email, password_hash, role)
