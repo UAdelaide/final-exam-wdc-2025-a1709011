@@ -117,7 +117,18 @@
 
         }
 
-        
+        async function getCurrentUser() {
+          try {
+            const res = await fetch('/api/users/me', { credentials: 'include' });
+            if (!res.ok) throw new Error('Failed to fetch user info');
+            const userData = await res.json();
+            return userData.user_id; // return user_id for use
+          } catch (error) {
+            error.value = error.message;
+            return null; // or handle no user case
+          }
+        }
+
 
         onMounted(() => {
           loadWalkRequests();
