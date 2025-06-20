@@ -159,7 +159,78 @@
                     console.error('Login error:', err);
                 });
         },
-      }
+      },
+
+      async mounted() {
+        try {
+            const res = await fetch('/users/me', { credentials: 'include' });
+            if (!res.ok) throw new Error();
+
+            const user = await res.json();
+
+            this.username = user.username;
+            this.user_id = user.user_id;
+            this.userImage = user.image || 'images/profile.gif';
+            this.mobile = user.mobile;
+            this.email = user.email;
+            this.country = user.country;
+            this.postcode = user.postcode;
+            this.city = user.city;
+            this.state = user.state;
+            this.street_name = user.street_name;
+            this.street_number = user.street_number;
+            this.role = user.role || 'customer';
+
+        } catch {
+            this.username = '';
+            this.user_id = '';
+            this.userImage = 'images/profile.gif';
+            this.mobile = '';
+            this.email = '';
+            this.country = '';
+            this.postcode = '';
+            this.city = '';
+            this.state = '';
+            this.street_name = '';
+            this.street_number = '';
+            this.role = '';
+        }
+
+        if (this.role === 'admin') {
+            this.fetchAllOrders();
+
+        } else if (this.isLoggedIn) {
+            this.fetchOrders();
+        }
+
+        fetch('/users/all-customers', { credentials: 'include' })
+            .then(res => res.json())
+            .then(data => {
+                this.customers = data;
+            })
+            .catch(err => {
+                console.error('Error fetching customers:', err);
+            });
+
+        const storedDarkMode = localStorage.getItem('darkMode');
+        if (storedDarkMode === 'true') {
+            this.isDarkMode = true;
+            document.body.classList.add('dark-mode');
+        }
+        const path = window.location.pathname;
+        if (path.includes('profile.html')) this.activeTab = 'profile';
+        else if (path.includes('address.html')) this.activeTab = 'address';
+        else if (path.includes('cart.html')) {
+            this.activeTab = 'cart';
+            this.loadCart();
+        }
+        else if (path.includes('customers.html')) { this.activeTab = 'customers'; }
+        else if (path.includes('order.html')) {
+            this.activeTab = 'order';
+            this.fetchPaypal();
+        }
+        else this.activeTab = 'home';
+    }
     }).mount('#app');
   </script>
 
