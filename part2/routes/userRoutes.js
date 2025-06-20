@@ -87,7 +87,7 @@ router.post('/logout', (req, res) => {
   });
 });
 
-router.get('/dogs', async function(req, res, next) {
+router.get('/alldogs', async function(req, res, next) {
   if (!req.session || !req.session.user) {
     return res.status(401).json({ error: 'Not logged in' });
   }
