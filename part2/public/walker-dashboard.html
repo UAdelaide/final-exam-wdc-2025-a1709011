@@ -8,23 +8,27 @@
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <style>
     .logout-container {
-      align-items: right;
-    }
-    .login-form button {
-      width: 40%;
-      padding: 10px;
-      font-size: 1rem;
-      font-weight: bold;
-      color: #fff;
-      background-color: #0066ff;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
 
-    .login-form button:hover {
-      background-color: #0052cc;
-    }
+  .logout-btn {
+    padding: 8px 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ff0000;
+    border: 2px solid #ff0000;
+    background: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .logout-btn:hover {
+    background-color: #ff0000;
+    color: #fff;
+  }
   </style>
 </head>
 <body class="bg-light">
