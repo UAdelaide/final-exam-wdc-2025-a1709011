@@ -10,5 +10,7 @@ async function initDb() {
 
   try {
 
-  } catch (error)
+  } catch (error) {
+
+  }
 }
