@@ -12,6 +12,11 @@ app.use(express.static(path.join(__dirname, '/public')));
 const walkRoutes = require('./routes/walkRoutes');
 const userRoutes = require('./routes/userRoutes');
 
+app.use(cors({
+  origin: 'http://localhost:8080',
+  credentials: true
+}));
+
 app.use(session({
   secret: FINALEXAM2025,
   resave: false,
