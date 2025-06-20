@@ -133,7 +133,7 @@
                         this.errorMessage = 'Incorrect credentials.';
                         throw new Error('Login failed');
                     }
-                    const userRes = await fetch('/users/me', {
+                    const userRes = await fetch('/userRoutes/me', {
                         credentials: 'include'
                     });
                     if (!userRes.ok) {
