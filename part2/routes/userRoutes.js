@@ -54,6 +54,22 @@ router.post('/login', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: 'Login failed' });
   }
+
+  req.session.user = {
+      message: 'Login successful',
+      user_id: user.user_id,
+      username: user.username,
+      image: user.picture_url,
+      email: user.email,
+      mobile: user.mobile,
+      country: user.country,
+      state: user.state,
+      postcode: user.postcode,
+      city: user.city,
+      street_name: user.street_name,
+      street_number: user.street_number,
+      role: user.role
+    };
 });
 
 
