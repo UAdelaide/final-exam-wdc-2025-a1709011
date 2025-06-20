@@ -13,7 +13,7 @@ const walkRoutes = require('./routes/walkRoutes');
 const userRoutes = require('./routes/userRoutes');
 
 app.use(cors({
-  origin: 'http://localhost:8080',
+  origin: 'http://localhost:8081',
   credentials: true
 }));
 
