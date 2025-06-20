@@ -124,10 +124,10 @@
               throw new Error('Failed to fetch user info');
             }
             const userData = await res.json();
-            return userData.user_id; 
+            return userData.user_id;
           } catch (error) {
             error.value = error.message;
-            return null; // or handle no user case
+            return null; 
           }
         }
 
