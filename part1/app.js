@@ -20,7 +20,9 @@ var app = express();
   }
 })();
 
-
+async function insertTestData() {
+    
+}
 (async () => {
   try {
     // Connect to MySQL without specifying a database
