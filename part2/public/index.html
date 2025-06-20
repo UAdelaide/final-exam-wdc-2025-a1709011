@@ -193,7 +193,7 @@
             }
             const dogList = await res.json();
 
-            // Get a random image for each dog
+            // Fetch a random image for each dog in the tabke list
             const dogsWithPhotos = await Promise.all(dogList.map(async (dog) => {
                 const imgRes = await fetch('https://dog.ceo/api/breeds/image/random');
                 const imgData = await imgRes.json();
