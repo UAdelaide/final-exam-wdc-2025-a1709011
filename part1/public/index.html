@@ -1,12 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title>Express</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
+  <title>Dog Walking Service - Dog of the Day</title>
+  <style>
+    /* No contrast, tiny click area for the button */
+    body {
+      background-color: #f0f0f0;
+      font-size: 12px;
+      color: #777777;
+    }
+    .btn {
+      font-size: 10px;
+      padding: 2px 4px;
+      cursor: pointer;
+    }
+    img {
+      display: block;
+      max-width: 100px;
+      border-radius: 100px;
+    }
+  </style>
 </head>
-
 <body>
-    <h1>Express</h1>
-    <p>Welcome to Express</p>
+  <div id="app">
+    <h1>Welcome to the Dog Walking Service</h1>
+    <div>
+      <img :src="dogImage" />
+    </div>
+    <div>{{ dogDetails }}</div>
+    <div><button class="btn" @click="getDog">Click Here</button></div>
+    <div>Dog Owner: John Doe. Breed: Unknown. Status: Not available.</div>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          dogImage: "",
+          dogDetails: "Dog of the Day: Max, a very energetic and loyal dog. Owner: John Doe. Breed: Unknown. Status: Not available."
+        };
+      },
+      methods: {
+        async getDog() {
+          const response = await fetch('https://dog.ceo/api/breeds/image/random');
+          const data = await response.json();
+          this.dogImage = data.message;
+        }
+      },
+      mounted() {
+        this.getDog();
+      }
+    }).mount('#app');
+  </script>
 </body>
 </html>
