@@ -114,7 +114,57 @@
         };
       },
 
-      methods: 
+      methods: {
+        async login() {
+           
+
+            await fetch('/users/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify({
+                    username: this.username,
+                    password: this.password,
+                    recaptcha: this.recaptchaToken
+                })
+            })
+                .then(async (response) => {
+                    if (!response.ok) {
+                        this.errorMessage = 'Incorrect credentials or reCAPTCHA failed.';
+                        throw new Error('Login failed');
+                        grecaptcha.reset();
+                    }
+                    const userRes = await fetch('/users/me', {
+                        credentials: 'include'
+                    });
+                    if (!userRes.ok) {
+                        throw new Error('Failed to fetch user info');
+                    }
+                    return userRes.json();
+                })
+                .then(user => {
+                    this.username = user.username;
+                    this.user_id = user.user_id;
+                    this.userImage = user.image || 'images/profile.gif';
+                    this.mobile = user.mobile;
+                    this.email = user.email;
+                    this.country = user.country;
+                    this.postcode = user.postcode;
+                    this.city = user.city;
+                    this.state = user.state;
+                    this.street_name = user.street_name;
+                    this.street_number = user.street_number;
+
+
+                    window.location.href = '/index.html';
+                })
+                .catch(err => {
+                    console.error('Login error:', err);
+                });
+        },
+      }
     }).mount('#app');
   </script>
 
