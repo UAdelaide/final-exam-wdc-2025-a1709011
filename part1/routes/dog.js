@@ -16,7 +16,7 @@ router.get('/api/dogs', async function(req, res, next) {
         `);
         res.json(rows);
   } catch (error) {
-    res.status(500).json({ error: 'Error retrieving dogs' });
+    res.status(500).json({ error: 'Error getting all dogs.' });
   }
 });
 
