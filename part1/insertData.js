@@ -47,7 +47,7 @@ async function initDb() {
 
     `);
 
-    await [\pool.query(`INSERT IGNORE INTO Dogs (owner_id, name, size)
+    await pool.query(`INSERT IGNORE INTO Dogs (owner_id, name, size)
                     SELECT user_id, 'Mel', 'large'
                     FROM Users
                     WHERE username = 'user05'
@@ -55,28 +55,28 @@ async function initDb() {
     `);
 
     // WalkRequests
-    await query(`INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
+    await pool.query(`INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
                     SELECT dog_id, '2025-06-10 08:00:00', 30, 'Parklands', 'open'
                     FROM Dogs
                     WHERE name = 'Max'
 
     `);
 
-    await query(`INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
+    await pool.query(`INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
                     SELECT dog_id, '2025-06-10 09:30:00', 45, 'Beachside Ave', 'accepted'
                     FROM Dogs
                     WHERE name = 'Bella'
 
     `);
 
-    await query(`INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
+    await pool.query(`INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
                     SELECT dog_id, '2025-06-20 09:45:00', 15, 'Woodville', 'accepted'
                     FROM Dogs
                     WHERE name = 'Jack'
 
     `);
 
-    await query(`INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
+    await pool.query(`INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
                     SELECT dog_id, '2025-06-05 09:45:00', 35, 'Adelaide', 'cancelled'
                     FROM Dogs
                     WHERE name = 'Mel'
