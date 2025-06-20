@@ -125,12 +125,11 @@
                 body: JSON.stringify({
                     username: this.username,
                     password: this.password,
-                    recaptcha: this.recaptchaToken
                 })
             })
                 .then(async (response) => {
                     if (!response.ok) {
-                        this.errorMessage = 'Incorrect credentials or reCAPTCHA failed.';
+                        this.errorMessage = 'Incorrect credentials.';
                         throw new Error('Login failed');
                         grecaptcha.reset();
                     }
