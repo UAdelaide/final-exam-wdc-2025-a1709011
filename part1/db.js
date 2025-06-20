@@ -109,7 +109,7 @@ let db;
 })();
 
 
-module.exports = db;
+// module.exports = db;
 module.exports = {
   query: async (sql, params) => {
     if (!db) {
