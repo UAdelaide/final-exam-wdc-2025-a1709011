@@ -180,12 +180,6 @@
             this.role = '';
         }
 
-        if (this.role === 'admin') {
-            this.fetchAllOrders();
-
-        } else if (this.isLoggedIn) {
-            this.fetchOrders();
-        }
       }
     }).mount('#app');
   </script>
