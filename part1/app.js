@@ -50,6 +50,13 @@ let db;
 
     `);
 
+    await db.query(`INSERT IGNORE INTO Dogs (owner_id, name, size)
+                    SELECT user_id, 'Max', 'medium'
+                    FROM Users
+                    WHERE username = 'alice123'
+
+    `);
+
     // Insert data if table is empty
     const [rows] = await db.execute('SELECT COUNT(*) AS count FROM books');
     if (rows[0].count === 0) {
