@@ -10,7 +10,16 @@ var dogRouter = require('./routes/dog');
 
 var app = express();
 
-let db;
+(async () => {
+  try {
+    await initDb();
+    console.log("Database connected.");
+    await insertTestData();
+  } catch (error) {
+    console.error("Error initializing database:", error);
+  }
+})();
+
 
 (async () => {
   try {
