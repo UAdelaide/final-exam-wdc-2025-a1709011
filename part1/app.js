@@ -43,8 +43,11 @@ let db;
     `);
 
     // Dogs
-    await db.query(`
-        
+    await db.query(`INSERT IGNORE INTO Dogs (owner_id, name, size)
+                    SELECT user_id, 'Max', 'medium'
+                    FROM Users
+                    WHERE username = 'alice123'; 
+
     `);
 
     // Insert data if table is empty
