@@ -13,7 +13,7 @@ async function initDb() {
 
 function query(sql, params) {
   if (!pool) {
-    throw new Error('Database not initialized');
+    throw new Error('Database pool not initialized');
   }
   return pool.query(sql, params);
 }
@@ -23,12 +23,4 @@ module.exports = {
   query,
 };
 
-// module.exports = db;
-module.exports = {
-  query: async (sql, params) => {
-    if (!db) {
-      throw new Error("Database pool not initialized");
-    }
-    return db.query(sql, params);
-  }
-};
+
