@@ -31,12 +31,6 @@ router.post('/register', async (req, res) => {
   }
 });
 
-router.get('/me', (req, res) => {
-  if (!req.session.user) {
-    return res.status(401).json({ error: 'Not logged in' });
-  }
-  res.json(req.session.user);
-});
 
 // POST login (dummy version)
 router.post('/login', async (req, res) => {
@@ -77,6 +71,12 @@ router.post('/login', async (req, res) => {
   }
 });
 
+router.get('/me', (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).json({ error: 'Not logged in' });
+  }
+  res.json(req.session.user);
+});
 
 
 
