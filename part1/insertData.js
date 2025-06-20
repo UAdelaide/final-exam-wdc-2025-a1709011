@@ -11,6 +11,6 @@ async function initDb() {
   try {
 
   } catch (error) {
-    console.error('Error inserting test data', )
+    console.error('Error inserting test data', error);
   }
 }
