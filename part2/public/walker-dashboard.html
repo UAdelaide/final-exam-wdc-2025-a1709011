@@ -80,15 +80,13 @@
         }
 
         async function logout() {
-            await fetch('/users/logout', {
+            await fetch('/api/users/logout', {
                 method: 'POST',
                 credentials: 'include'
             });
 
             this.username = '';
             this.user_id = '';
-            this.userImage = '';
-            this.mobile = '';
             this.email = '';
             this.country = '';
             this.postcode = '';
