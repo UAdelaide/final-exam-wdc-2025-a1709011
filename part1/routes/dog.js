@@ -20,7 +20,7 @@ router.get('/dogs', async function(req, res, next) {
   }
 });
 
-app.get('/api/walkrequests/open', async (req, res) => {
+router.get('/walkrequests/open', async function (req, res, next) {
   try {
     const [rows] = await pool.query(`
       SELECT wr.request_id,
