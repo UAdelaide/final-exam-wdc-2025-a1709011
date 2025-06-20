@@ -9,7 +9,7 @@ async function initDb() {
   });
 
   try {
-        //Insert test data Users
+    // Insert test data Users
     await pool.query(`INSERT IGNORE INTO Users (username, email, password_hash, role)
                 VALUES ('alice123', 'alice@example.com', 'hashed123', 'owner'),
                         ('bobwalker', 'bob@example.com', 'hashed456', 'walker'),
@@ -83,7 +83,7 @@ async function initDb() {
 
     `);
 
-    await query(`INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
+    await pool.query(`INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
                     SELECT dog_id, '2025-06-03 10:45:00', 55, 'Henly Beach', 'completed'
                     FROM Dogs
                     WHERE name = 'Jackie'
