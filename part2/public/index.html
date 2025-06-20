@@ -222,7 +222,6 @@
             this.email = user.email;
             this.role = user.role;
 
-            
 
         } catch {
             this.username = '';
@@ -231,6 +230,7 @@
             this.role = '';
         }
 
+        this.loadDogs();
       }
     }).mount('#app');
   </script>
