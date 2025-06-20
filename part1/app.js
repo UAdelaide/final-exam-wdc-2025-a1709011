@@ -44,7 +44,7 @@ let db;
 
     // Dogs
     await db.query(`
-
+        
     `);
 
     // Insert data if table is empty
