@@ -58,9 +58,9 @@ let db;
     `);
 
     await db.query(`INSERT IGNORE INTO Dogs (owner_id, name, size)
-                    SELECT user_id, 'Jack', 'large'
+                    SELECT user_id, 'Jackie', 'medium'
                     FROM Users
-                    WHERE username = 'carol123'
+                    WHERE username = 'user05'
 
     `);
 
