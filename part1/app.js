@@ -79,7 +79,14 @@ let db;
     `);
 
     // WalkRequests
-    await db.query(`INSERT INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
+    await db.query(`INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
+                    SELECT dog_id, '2025-06-10 08:00:00', 30, 'Parklands', 'open'
+                    FROM Dogs
+                    WHERE name = 'Max';
+
+    `);
+
+      await db.query(`INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
                     SELECT dog_id, '2025-06-10 08:00:00', 30, 'Parklands', 'open'
                     FROM Dogs
                     WHERE name = 'Max';
