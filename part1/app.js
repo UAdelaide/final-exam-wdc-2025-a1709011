@@ -101,9 +101,16 @@ let db;
     `);
 
     await db.query(`INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
-SELECT dog_id, '2025-06-05 09:45:00', 35, 'Adelaide', 'cancelled'
-FROM Dogs
-WHERE name = 'Mel'
+                    SELECT dog_id, '2025-06-05 09:45:00', 35, 'Adelaide', 'cancelled'
+                    FROM Dogs
+                    WHERE name = 'Mel'
+
+    `);
+
+    await db.query(`INSERT IGNORE INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
+                    SELECT dog_id, '2025-06-05 09:45:00', 35, 'Adelaide', 'cancelled'
+                    FROM Dogs
+                    WHERE name = 'Mel'
 
     `);
 
