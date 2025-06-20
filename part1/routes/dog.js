@@ -56,7 +56,7 @@ router.get('/walkers/summary', async function(req, res, next) {
     `);
     res.json(rows);
   } catch (error) {
-    res.status(500).json({ error: 'Error retrieving walker summary' });
+    res.status(500).json({ error: 'Error getting walker summary.' });
   }
 });
 
