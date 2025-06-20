@@ -64,13 +64,10 @@ let db;
 
     `);
 
-    await db.query(`INSERT INTO Dogs (owner_id, name, size)
-
-SELECT user_id, 'Mel', 'large'
-
-FROM Users
-
-WHERE username = 'user05';
+    await db.query(`INSERT IGNORE INTO Dogs (owner_id, name, size)
+                    SELECT user_id, 'Mel', 'large'
+                    FROM Users
+                    WHERE username = 'user05'
 
     `);
 
