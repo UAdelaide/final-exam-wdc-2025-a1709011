@@ -115,7 +115,7 @@
       <tbody>
         <tr v-for="dog in dogs" :key="dog.dog_id">
           <td>{{ dog.dog_id }}</td>
-          <td>{{ dog.name }}</td>
+          <td>{{ dog.dog_name }}</td>
           <td>{{ dog.size }}</td>
           <td>{{ dog.owner_id }}</td>
           <td><img :src="dog.photo" alt="Dog Photo" style="max-width:100px;"></td>
@@ -222,7 +222,7 @@
             this.email = user.email;
             this.role = user.role;
 
-        
+
         } catch {
             this.username = '';
             this.user_id = '';
