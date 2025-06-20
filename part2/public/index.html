@@ -117,7 +117,7 @@
 
       methods: {
         async login() {
-            await fetch('/userRoutes/login', {
+            await fetch('/api/users/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -133,7 +133,7 @@
                         this.errorMessage = 'Incorrect credentials.';
                         throw new Error('Login failed');
                     }
-                    const userRes = await fetch('/userRoutes/me', {
+                    const userRes = await fetch('/api/users/me', {
                         credentials: 'include'
                     });
                     if (!userRes.ok) {
