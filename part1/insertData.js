@@ -14,3 +14,5 @@ async function initDb() {
     console.error('Error inserting test data', error);
   }
 }
+
+initDb();
