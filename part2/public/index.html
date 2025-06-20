@@ -163,7 +163,7 @@
 
       async mounted() {
         try {
-            const res = await fetch('/users/me', { credentials: 'include' });
+            const res = await fetch('/api/users/me', { credentials: 'include' });
             if (!res.ok) throw new Error();
 
             const user = await res.json();
