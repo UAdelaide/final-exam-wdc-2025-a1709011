@@ -88,16 +88,23 @@ router.post('/logout', (req, res) => {
 });
 
 router.get('/dogs', async function(req, res, next) {
-    try {
-        const [rows] = await db.query(`
-        SELECT d.dog_id, d.name AS dog_name, d.size, u.username AS owner_username
-        FROM Dogs d
-        JOIN Users u ON d.owner_id = u.user_id
-        `);
-        res.json(rows);
+  if (!req.session?.user) {
+    return res.status(401).json({ error: 'Not logged in' });
+  }
+
+  const ownerId = req.session.user.user_id;
+
+  try {
+    const [rows] = await db.query(`
+      SELECT d.dog_id, d.name AS dog_name, d.size
+      FROM Dogs d
+      WHERE d.owner_id = ?
+    `, [ownerId]);
+    res.json(rows);
   } catch (error) {
-    res.status(500).json({ error: 'Error getting all dogs.' });
+    res.status(500).json({ error: 'Error getting dogs.' });
   }
 });
+
 
 module.exports = router;
