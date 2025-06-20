@@ -116,9 +116,7 @@
 
       methods: {
         async login() {
-           
-
-            await fetch('/users/login', {
+            await fetch('/userRoutes/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
