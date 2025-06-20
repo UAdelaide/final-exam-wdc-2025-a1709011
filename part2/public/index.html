@@ -148,9 +148,11 @@
 
 
                     if (user.role == 'walker') {
-                      
+                      window.location.href = '/index.html';
+                    } else {
+                      window.location.href = '/index.html';
                     }
-                    window.location.href = '/index.html';
+
                 })
                 .catch(err => {
                     console.error('Login error:', err);
