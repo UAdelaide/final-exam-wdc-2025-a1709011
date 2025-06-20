@@ -41,7 +41,7 @@ app.get('/api/walkrequests/open', async (req, res) => {
 });
 
 
-router.get('/walkers/summary', async (req, res) => {
+router.get('/walkers/summary', async function(req, res, next) {
   try {
     const [rows] = await pool.query(`
       SELECT u.username AS walker_username,
